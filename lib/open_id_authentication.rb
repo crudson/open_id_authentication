@@ -112,17 +112,18 @@ module OpenIdAuthentication
       case response.status
       when OpenID::Consumer::SUCCESS
         yield Result[:successful], identifier,
-          OpenID::SReg::Response.from_success_response(response)
+          OpenID::SReg::Response.from_success_response(response),
+          OpenID::AX::FetchResponse.from_success_response(response)
       when :missing
-        yield Result[:missing], identifier, nil
+        yield Result[:missing], identifier, nil, nil
       when :invalid
-        yield Result[:invalid], identifier, nil
+        yield Result[:invalid], identifier, nil, nil
       when OpenID::Consumer::CANCEL
-        yield Result[:canceled], identifier, nil
+        yield Result[:canceled], identifier, nil, nil
       when OpenID::Consumer::FAILURE
-        yield Result[:failed], identifier, nil
+        yield Result[:failed], identifier, nil, nil
       when OpenID::Consumer::SETUP_NEEDED
-        yield Result[:setup_needed], response.setup_url, nil
+        yield Result[:setup_needed], response.setup_url, nil, nil
       end
     end
 end

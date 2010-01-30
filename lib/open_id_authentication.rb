@@ -35,7 +35,7 @@ module OpenIdAuthentication
     end
   end
 
-  self.store = nil
+  self.store = :memory
 
   class Result
     ERROR_MESSAGES = {

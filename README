@@ -1,6 +1,6 @@
 This Fork
 ====================
-The plugin currently provides support for adding AX fields to the reqwuest, but they are not considered in the response.
+The plugin currently provides support for adding AX fields to the request, but they are not considered in the response.
 
 I added a fourth argument to the block passed in to 'authenticate_with_open_id' that will be populated with the AX response.
 
